@@ -11,25 +11,17 @@ module.exports = {
   },
   mode: "development",
   devServer: {
-    port: 9000,
+    port: 9001,
     static: {
       directory: path.resolve(__dirname, "./dist"),
     },
     devMiddleware: {
-      index: "index.html",
+      index: "hello-world.html",
       writeToDisk: true,
     },
   },
   module: {
     rules: [
-      {
-        test: /\.(png|jpg)$/,
-        use: ["file-loader"],
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
@@ -55,16 +47,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: "hello-world.html",
-      chunks: ["hello-world"],
       title: "Hello world",
       description: "Hello world",
-      template: "src/page-template.hbs",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "kiwi.html",
-      chunks: ["kiwi"],
-      title: "Kiwi",
-      description: "Kiwi",
       template: "src/page-template.hbs",
     }),
   ],
